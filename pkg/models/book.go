@@ -1,9 +1,7 @@
 package models
 
 import (
-	"go-bookstore/pkg/config"
-
-	"github.com/akhil/go-bookstore/pkg/config"
+	"github.com/KevinNguyen1703/BookStoreGolangServer/pkg/config"
 	"github.com/jinzhu/gorm"
 )
 
@@ -25,6 +23,7 @@ func init() {
 func (b *Book) CreateBook() *Book {
 	db.NewRecord(b)
 	db.Create(&b)
+	return b
 }
 
 func GetAllBooks() []Book {
