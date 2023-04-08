@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"net/http"
 
@@ -13,5 +14,6 @@ func main() {
 	r := mux.NewRouter()
 	routes.RegisterBookStoreRoutes(r)
 	http.Handle("/", r)
+	fmt.Println("Server is starting")
 	log.Fatal(http.ListenAndServe("localhost:9010", r))
 }
