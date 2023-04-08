@@ -58,6 +58,20 @@ func DeleteBook(w http.ResponseWriter, r *http.Request) {
 	w.Write(res)
 }
 
+func DeleteAll(w http.ResponseWriter, r *http.Request) {
+	var index int64 = 1
+	for {
+		book, _ := models.GetBookById(index)
+		if book.Data == "" {
+			break
+		}
+		models.DeleteBook(index)
+		index++
+	}
+	w.Header().Set("Content-Type", "pkglication/json")
+	w.WriteHeader(http.StatusOK)
+}
+
 func UpdateBook(w http.ResponseWriter, r *http.Request) {
 	var updateBook = &models.Book{}
 	utils.ParseBody(r, updateBook)
