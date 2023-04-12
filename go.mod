@@ -1,4 +1,4 @@
-module github.com/KevinNguyen1703/BookStoreGolangServer
+module github.com/KevinNguyen1703/FrameStoreGolangServer
 
 go 1.20
 

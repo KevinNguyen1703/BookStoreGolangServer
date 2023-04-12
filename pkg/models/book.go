@@ -1,13 +1,13 @@
 package models
 
 import (
-	"github.com/KevinNguyen1703/BookStoreGolangServer/pkg/config"
+	"github.com/KevinNguyen1703/FrameStoreGolangServer/pkg/config"
 	"github.com/jinzhu/gorm"
 )
 
 var db *gorm.DB
 
-type Book struct {
+type Frame struct {
 	gorm.Model
 	Video       string `json:"Video"`
 	Data        string `json:"Data"`
@@ -17,29 +17,29 @@ type Book struct {
 func init() {
 	config.Connect()
 	db = config.GetDB()
-	db.AutoMigrate(&Book{})
+	db.AutoMigrate(&Frame{})
 }
 
-func (b *Book) CreateBook() *Book {
+func (b *Frame) CreateFrame() *Frame {
 	db.NewRecord(b)
 	db.Create(&b)
 	return b
 }
 
-func GetAllBooks() []Book {
-	var Books []Book
-	db.Find(&Books)
-	return Books
+func GetAllFrames() []Frame {
+	var Frames []Frame
+	db.Find(&Frames)
+	return Frames
 }
 
-func GetBookById(Id int64) (*Book, *gorm.DB) {
-	var getBook Book
-	db := db.Where("ID=?", Id).Find(&getBook)
-	return &getBook, db
+func GetFrameById(Id int64) (*Frame, *gorm.DB) {
+	var getFrame Frame
+	db := db.Where("ID=?", Id).Find(&getFrame)
+	return &getFrame, db
 }
 
-func DeleteBook(ID int64) Book {
-	var book Book
-	db.Where("ID=?", ID).Delete(book)
-	return book
+func DeleteFrame(ID int64) Frame {
+	var frame Frame
+	db.Where("ID=?", ID).Delete(frame)
+	return frame
 }

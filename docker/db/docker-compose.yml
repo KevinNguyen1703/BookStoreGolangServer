@@ -6,10 +6,12 @@ services:
       - SYS_NICE
     restart: always
     environment:
-      - MYSQL_DataBASE=book
+      - MYSQL_DATABASE=frame
       - MYSQL_ROOT_PASSWORD=root
     ports:
       - '3306:3306'
+    volumes:
+      - db:/var/lib/mysql
 volumes:
   db:
     driver: local
